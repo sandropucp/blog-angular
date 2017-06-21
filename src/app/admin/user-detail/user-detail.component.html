@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div id="registration-error" class="alert alert-danger" *ngIf="registrationFailed">
+        <button type="button" class="close" aria-label="Close" (click)="registrationFailed = false;"><span aria-hidden="true">&#215;</span></button>        Try again please...
+      </div>
+      <form (ngSubmit)="update()" [formGroup]="userForm">
+        <h4 class="heading-mini">Update User</h4>
+        <hr>
+        <div class="form-group">
+          <label for="name" id="name-label">Name</label>
+          <input id="name" class="form-control" formControlName="name">
+          <div id="name-warning" *ngIf="nameCtrl.dirty && nameCtrl.hasError('required')">Name is required</div>
+          <div id="name-length-error" *ngIf="nameCtrl.dirty && nameCtrl.hasError('minlength')">Your name should be at 3 characters</div>
+        </div>
+        <div class="form-group">
+          <label for="birthYear">Birth year</label>
+          <input id="birthYear" class="form-control" type="number" formControlName="birthYear">
+          <div *ngIf="birthYearCtrl.dirty && birthYearCtrl.hasError('required')">Birth year is required</div>
+          <div id="invalid-year-error" *ngIf="birthYearCtrl.dirty && birthYearCtrl.hasError('invalidYear')">This is not a valid year</div>
+        </div>
+        <div class="form-group">
+          <label for="mobileNumber">Mobile Number</label>
+          <input type="text" class="form-control" id="mobileNumber" formControlName="mobileNumber">
+          <div id="invalid-mobileNumber-error" *ngIf="mobileNumberCtrl.dirty && mobileNumberCtrl.hasError('InvalidMobileNumber')">This is not a valid Mobile Number</div>
+        </div>
+        <div class="col-md-12 text-right">
+          <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="space-70"></div>

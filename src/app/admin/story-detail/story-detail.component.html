@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div id="registration-error" class="alert alert-danger" *ngIf="registrationFailed">
+        <button type="button" class="close" aria-label="Close" (click)="registrationFailed = false;"><span aria-hidden="true">&#215;</span></button>Try
+        again please...
+      </div>
+      <form (ngSubmit)="update()" [formGroup]="storyForm">
+        <h4 class="heading-mini">Update Story</h4>
+        <hr>
+        <div class="form-group">
+          <label for="title" id="name-label">Title</label>
+          <input id="title" class="form-control" formControlName="title">
+          <div id="title-warning" *ngIf="titleCtrl.dirty && titleCtrl.hasError('required')">Title is required</div>
+          <div id="title-length-error" *ngIf="titleCtrl.dirty && titleCtrl.hasError('minlength')">Your title should be at 3 characters</div>
+        </div>
+        <div class="form-group">
+          <label for="body">Body</label>
+          <textarea id="body" class="form-control" rows="7" formControlName="body"></textarea>
+          <div *ngIf="bodyCtrl.dirty && bodyCtrl.hasError('required')">body is required</div>
+        </div>
+        <div class="form-group">
+          <label for="tags">Tags</label>          
+          <select id="tags" class="form-control" formControlName="tags">
+            <option value=""></option> 
+            <option value="Javascript">Javascript</option>
+            <option value="Database">Database</option>
+            <option value="Angular 2">Angular 2</option>
+          </select>
+          
+        </div>
+        <div class="col-md-12 text-right">
+          <button class="btn btn-primary" type="submit" [disabled]="!storyForm.valid">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="space-70"></div>

@@ -1,0 +1,46 @@
+<div class="sidebar-box">
+  <div class="widget-search">
+    <form class="search-form">
+      <input type="text" class="form-control" placeholder="search here..." (input)="term$.next($event.target.value)">
+      <i class="ion-search" data-toggle="tooltip" data-placement="top" title="" data-original-title="hit enter to search"></i>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="sidebar-box">
+  <h4>tags</h4>
+  <ul class="cat-list">
+    <li *ngFor="let tag of tags">
+      <a [routerLink]="['/stories']" [queryParams]="{ tag: tag._id }" data-toggle="tooltip" data-placement="right" title=""
+        data-original-title="10" class="hover-color">{{tag.name}}</a></li>    
+  </ul>
+</div>
+<hr>
+<div class="sidebar-box">
+  <h4>Text widget</h4>
+  <p>
+    Do not watch the clock; do what it does. Keep going :)
+  </p>
+</div>
+<hr>
+<div class="sidebar-box">
+  <h4>recent post</h4>
+  <div class="recent" *ngFor="let story of stories">
+    <p>
+      <a [routerLink]="['/stories',story._id]" class="hover-color">{{ story.title }}</a>
+    </p>
+    <span class="recent-date">{{ story.createdAt | date }}</span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<hr>
+<div class="sidebar-box">
+  <h4>Elsewhere</h4>
+  <ul class=" list-inline social-btn">
+    <li><a href="https://www.facebook.com/sandro.sanchez"><i class="ion-social-facebook" data-toggle="tooltip" data-placement="top" title="" data-original-title="Like On Facebook"></i></a></li>
+    <li><a href="https://twitter.com/sandropucp"><i class="ion-social-twitter" data-toggle="tooltip" data-placement="top" title="" data-original-title="Follow On twitter"></i></a></li>
+    <li><a href="https://plus.google.com/u/0/101841764934044559846"><i class="ion-social-googleplus" data-toggle="tooltip" data-placement="top" title="" data-original-title="Follow On googleplus"></i></a></li>
+  </ul>
+</div>
+<hr>

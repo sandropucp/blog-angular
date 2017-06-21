@@ -1,0 +1,17 @@
+<div class="blog-post-section" *ngFor="let story of stories">  
+  <div class="blog-post-header">
+    <h3><a [routerLink]="['/stories',story._id]" class="hover-color">{{story.title}}</a></h3>
+  </div>
+  <div class="blog-post-info">
+    <span><a class="hover-color">by {{story.author.name}}</a> | on {{story.createdAt | date}} | 
+      <a class="hover-color">{{story.comments.length}} comment</a></span>
+  </div>
+  <div class="blog-post-detail">
+    <p>
+      {{story.body}}
+    </p>  
+  </div>
+  <div class="blog-post-more text-right">
+    <a [routerLink]="['/stories',story._id]" class="btn theme-btn-default btn-lg">continue reading</a>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<section id="content-region-3" class="padding-40 page-tree-bg">
+  <div class="container">
+    <h3 class="page-tree-text">
+      Create new account
+    </h3>
+  </div>
+</section>
+<div class="space-70"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div id="registration-error" class="alert alert-danger" *ngIf="registrationFailed">
+        <button type="button" class="close" aria-label="Close" (click)="registrationFailed = false;"><span aria-hidden="true">&#215;</span></button>Try again with another login...
+      </div>
+      <div class="my-login-form">
+        <form (ngSubmit)="register()" [formGroup]="userForm">
+          <h4 class="heading-mini">Sign up</h4>
+          <hr>
+          <div class="form-group">
+            <label for="name" id="name-label">Name</label>
+            <input id="name" class="form-control" formControlName="name">
+            <div id="name-warning" *ngIf="nameCtrl.dirty && nameCtrl.hasError('required')">Name is required</div>
+            <div id="name-length-error" *ngIf="nameCtrl.dirty && nameCtrl.hasError('minlength')">Your name should be at 3 characters</div>
+          </div>
+          <div class="form-group">
+            <label for="username" id="login-label">Username</label>
+            <input id="username" class="form-control" formControlName="username">
+            <div id="username-warning" *ngIf="usernameCtrl.dirty && usernameCtrl.hasError('required')">Username is required</div>
+            <div id="username-length-error" *ngIf="usernameCtrl.dirty && usernameCtrl.hasError('minlength')">Your username should be at 3 characters</div>
+          </div>
+          <div formGroupName="passwordForm">
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input id="password" class="form-control" type="password" formControlName="password">
+              <div *ngIf="passwordCtrl.dirty && passwordCtrl.hasError('required')">Password is required</div>
+            </div>
+            <div class="form-group">
+              <label for="confirm">Confirm password</label>
+              <input id="confirm" class="form-control" type="password" formControlName="confirmPassword">
+              <div *ngIf="confirmPasswordCtrl.dirty && confirmPasswordCtrl.hasError('required')">Confirming password is required</div>
+            </div>
+            <div id="password-matching-error" *ngIf="passwordForm.dirty && passwordForm.hasError('matchingError')">Your password does not match</div>
+          </div>
+          <div class="form-group">
+            <label for="birthYear">Birth year</label>
+            <input id="birthYear" class="form-control" type="number" formControlName="birthYear">
+            <div *ngIf="birthYearCtrl.dirty && birthYearCtrl.hasError('required')">Birth year is required</div>
+            <div id="invalid-year-error" *ngIf="birthYearCtrl.dirty && birthYearCtrl.hasError('invalidYear')">This is not a valid year</div>
+          </div>
+          <div class="col-md-12 text-right">
+            <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid">Sign up</button>
+          </div>
+          <hr>
+          <div class="form-btm-link text-center">
+            <a href="signup.html">Already have an account? </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="space-70"></div>

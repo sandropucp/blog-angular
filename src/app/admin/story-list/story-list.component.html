@@ -1,0 +1,31 @@
+<div class="table-responsive">
+  <table id="shopping-cart-table" class="shopping-cart-table table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Tile</th>
+        <th>Created At</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let story of stories">
+        <td class="td-name">
+          <h4 class="product-name"><a href="#">{{story.title}}</a></h4>
+        </td>
+        <td>
+          <div class="price">{{story.createdAt | date}}</div>
+        </td>
+        <td class="td-edit">
+          <a [routerLink]="['/admin/stories', story._id]" class="edit"><i class="ion-edit"></i> Edit</a>
+        </td>
+        <td class="td-remove">
+          <a (click)=delete(story) class="product-remove">
+            <i class="ion-trash-b"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="space-40"></div>

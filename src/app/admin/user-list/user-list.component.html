@@ -1,0 +1,33 @@
+<div class="table-responsive">
+  <table id="shopping-cart-table" class="shopping-cart-table table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th class="td-name">Name</th>
+        <th class="td-price">Username</th>
+        <th></th>        
+        <th class="td-remove"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td class="td-name">
+          <h4 class="product-name">
+            <a href="#">{{user.name}}</a>
+          </h4>
+        </td>
+        <td class="td-price">
+          <div class="price">{{user.username}}</div>
+        </td>
+        <td class="td-edit">
+          <a [routerLink]="['/admin/users', user._id]" class="edit"><i class="ion-edit"></i> Edit</a>
+        </td>
+        <td class="td-remove">
+          <a (click) = delete(user) class="product-remove">
+            <i class="ion-trash-b"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="space-40"></div>

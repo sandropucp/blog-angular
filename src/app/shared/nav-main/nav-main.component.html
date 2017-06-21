@@ -1,0 +1,55 @@
+<a href="#" class="scrollToTop"><i class="ion-android-arrow-dropup-circle"></i></a>
+
+<header class="header-main">
+
+  <div class="top-bar">
+    <div class="container">
+      <ul class="info list-inline pull-left hidden-xs" *ngIf="user">
+        <li><a href="#" class="hover-color"><i class="ion-ios-email-outline"></i> {{ user.email }} </a></li>
+        <li><i class="ion-person"></i> {{ user.name }} </li>
+      </ul>
+      <div class="pull-right">
+        <ul class="info list-inline">
+          <li><a [routerLink]="['./signup']" class="hover-color">Create an account?</a></li>
+          <li *ngIf="!user"><a [routerLink]="['./login']" class="hover-color"><i class="ion-man"></i> Login</a></li>
+          <li *ngIf="user"><a href><span (click)="logout($event)"><i class="ion-log-out"></i></span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="navbar navbar-default sticky-nav sticky yamm" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class=" dropdown">
+            <a [routerLink]="['./']" class="dropdown-toggle js-activated" data-toggle="dropdown">Home</a>
+          </li>
+
+          <li class=" dropdown">
+            <a [routerLink]="['./admin']" class="dropdown-toggle js-activated" data-toggle="dropdown">Admin</a>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle hover-color"><i class="ion-person"></i> </a>
+            <ul class="dropdown-menu">
+              <li><a [routerLink]="['./stories-admin']">New Story</a></li>
+              <li><a [routerLink]="['./admin/story']">Drafts</a></li>
+              <li><a [routerLink]="['./admin/stories']">Stories</a></li>
+              <li><a [routerLink]="['./users-admin']">Profile</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

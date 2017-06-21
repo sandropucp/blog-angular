@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8" *ngIf="story">
+
+      <div class="blog-post-section">
+        <div class="blog-post-header">
+          <h3><a class="hover-color">{{story.title}}</a></h3>
+        </div>
+        <div class="blog-post-info">
+          <span><a class="hover-color">by {{story.author.name}}</a> | on {{story.createdAt | date}} | 
+            <a class="hover-color">{{story.comments.length}} comment</a></span>
+        </div>
+        <div class="blog-post-detail">
+          <p>{{story.body}}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          
+          <div class="post-comment-wrapper clearfix">
+            <h3>Comment ({{story.comments.length}})</h3>
+            <div class="comment-box clearfix" *ngFor="let comment of story.comments">
+              <span>by {{comment.author.name}}</span>
+              <p>{{comment.body}}</p>
+            </div>
+          </div>
+
+          <div class="space-40"></div>
+          
+          <div class="comment-form-wrapper">
+            <h3>leave a comment</h3>
+            <form (ngSubmit)="addComment()" [formGroup]="commentForm">
+              <div class="row">               
+                <div class="col-md-12">
+                  <textarea id="body" class="form-control" rows="7" placeholder="Comment"
+                  formControlName="body"></textarea>
+                </div>
+                <div class="col-md-12 text-right">
+                  <button type="submit" class="btn btn-lg theme-btn-color">Comment</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
